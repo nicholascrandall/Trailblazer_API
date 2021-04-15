@@ -1,0 +1,24 @@
+{
+  "name": "trailblazer_api",
+  "version": "1.0.0",
+  "description": "Backend for the Trailblazer app.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholascrandall/Trailblazer_API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicholascrandall/Trailblazer_API/issues"
+  },
+  "homepage": "https://github.com/nicholascrandall/Trailblazer_API#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.4"
+  }
+}
