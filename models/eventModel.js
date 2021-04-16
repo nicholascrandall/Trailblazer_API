@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const {Schema, model} = mongoose
 
 const eventSchema = new Schema({
+    name: {type: String, required:true, default: "My Event"},
     lat: Number,
     long: Number,
     date: Date,
