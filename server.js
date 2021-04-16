@@ -1,7 +1,8 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const PORT = process.env.PORT
 const app = express()
-const PORT = 3003
 
 //MIDDLEWARE
 app.use(express.json())
@@ -20,6 +21,7 @@ db.on('disconnected', ()=> console.log('Mongoose disconnected...'));
 
 //CONTROLLERS
 app.use('/event', require('./controllers/eventController'))
+app.use('/user', require('./controllers/userController'))
 
 app.listen(PORT, () => {
     console.log('server is listening');
