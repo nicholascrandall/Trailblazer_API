@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT
 const app = express()
+const cors = require('cors')
 const session = require('express-session');
 
 //MIDDLEWARE
@@ -12,6 +13,20 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+//Cors
+const whitelist = ['http://localhost:3000']
+const corsOptions = {
+	origin: (origin, callback) => {
+		if (whitelist.indexOf(origin) !== -1 || !origin) {
+			callback(null, true)
+		} else {
+			callback(new Error('Not allowed by CORS'))
+		}
+	}
+}
+
+app.use(cors(corsOptions))
 
 //mongoose
 mongoose.connect('mongodb://localhost:27017/trailblazerDB', {
