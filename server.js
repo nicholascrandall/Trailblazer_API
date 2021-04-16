@@ -3,9 +3,15 @@ const express = require('express')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT
 const app = express()
+const session = require('express-session');
 
 //MIDDLEWARE
 app.use(express.json())
+app.use(session({
+    secret: process.env.SECRET, 
+    resave: false,
+    saveUninitialized: false
+}))
 
 //mongoose
 mongoose.connect('mongodb://localhost:27017/trailblazerDB', {
