@@ -40,7 +40,7 @@ session.delete('/',(req,res)=>{
         } else {
             res.status(200).json({message: "Successfully Logged Out: " + loggedOutUser})
         }
-        // res.redirect() need to redirect ppl back to login page 
+        res.redirect('/user/login')
     })
 })
 
