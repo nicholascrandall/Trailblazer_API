@@ -1,6 +1,7 @@
 const express = require('express')
 const event = express.Router()
 const EventModel = require('../models/eventModel')
+const eventSeed = require('../models/eventsSeed')
 
 //index
 event.get('/', (req, res) => {
@@ -45,5 +46,16 @@ event.put('/:id', (req, res) => {
     })
 })
 
+//event seeding
+event.get('/seed', (req, res) => {
+    EventModel.create(eventSeed, (err, newEvents) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(newEvents);
+            res.redirect('/event')
+        }
+    })
+})
 
 module.exports = event
