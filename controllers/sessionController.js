@@ -17,15 +17,12 @@ session.post('/',(req,res)=>{
             if(foundUser){
                 if(bcrypt.compareSync(req.body.password,foundUser.password)){
                     req.session.currentUser = foundUser
-                    res.status(200).json({message: "Successfully Signed In: " + foundUser.username})
-                    // res.redirect() not sure where to route ppl to 
+                    res.status(200).json({message: "Successfully Signed In: " + foundUser.username, status: 200})
                 } else {
-                    res.status(400).json({message: "Invalid Password"})
-                    // res.render() not sure where to route ppl to (invlaid password)
+                    res.status(400).json({message: "Invalid Password", status: 400})
                 }
             } else {
-                res.status(400).json({message: "Invalid Username"})
-                // res.render() invalid usename
+                res.status(400).json({message: "Invalid Username", status: 400})
             }
         }
     })
