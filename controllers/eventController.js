@@ -13,6 +13,16 @@ event.get('/', (req, res) => {
     })
 })
 
+//search
+event.get('/search', (req, res) => {
+    EventModel.fuzzySearch({query: req.query.query}, (error, foundEvents) => {
+        if (error) {
+            res.status(400).json({ error: error.message })
+        }
+        res.status(200).json(foundEvents)
+    })
+})
+
 //create
 event.post('/', (req, res) => {
     EventModel.create(req.body, (error, createdEvent) => {
