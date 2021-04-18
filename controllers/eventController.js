@@ -9,7 +9,8 @@ event.get('/', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        res.status(200).json(foundEvents)
+        console.log(req.session.currentUser);
+        res.status(200).json({data:foundEvents, currentUser: req.session.currentUser})
     })
 })
 
