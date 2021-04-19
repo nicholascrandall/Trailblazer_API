@@ -24,6 +24,16 @@ event.get('/search', (req, res) => {
     })
 })
 
+//show
+event.get('/:id', (req, res) => {
+    EventModel.findById(req.params.id, (error, foundEvent) => {
+        if (error) {
+            res.status(400).json({ error: error.message })
+        }
+        res.status(200).json(foundEvent)
+    })
+})
+
 //create
 event.post('/', (req, res) => {
     EventModel.create(req.body, (error, createdEvent) => {
@@ -58,14 +68,12 @@ event.put('/:id', (req, res) => {
 })
 
 //event seeding
-event.get('/seed', (req, res) => {
+event.post('/seed', (req, res) => {
     EventModel.create(eventSeed, (err, newEvents) => {
         if (err) {
-            console.log(err);
-        } else {
-            console.log(newEvents);
-            res.redirect('/event')
+            res.status(400).json({ err: err.message });
         }
+        res.status(200).json(newEvents)
     })
 })
 
