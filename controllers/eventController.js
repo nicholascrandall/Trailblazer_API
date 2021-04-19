@@ -13,16 +13,6 @@ event.get('/', (req, res) => {
     })
 })
 
-//show
-event.get('/:id', (req, res) => {
-    EventModel.findById(req.params.id, (error, foundEvent) => {
-        if (error) {
-            res.status(400).json({ error: error.message })
-        }
-        res.status(200).json(foundEvent)
-    })
-})
-
 //search
 event.get('/search', (req, res) => {
     EventModel.fuzzySearch({query: req.query.query}, (error, foundEvents) => {
@@ -30,6 +20,16 @@ event.get('/search', (req, res) => {
             res.status(400).json({ error: error.message })
         }
         res.status(200).json(foundEvents)
+    })
+})
+
+//show
+event.get('/:id', (req, res) => {
+    EventModel.findById(req.params.id, (error, foundEvent) => {
+        if (error) {
+            res.status(400).json({ error: error.message })
+        }
+        res.status(200).json(foundEvent)
     })
 })
 
