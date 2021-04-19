@@ -30,7 +30,7 @@ event.post('/', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        res.status(200).json(createdEvent)
+        res.status(200).json({data:createdEvent, currentUser: req.session.currentUser})
     })
 })
 
