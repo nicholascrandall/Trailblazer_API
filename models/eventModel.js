@@ -9,7 +9,7 @@ const eventSchema = new Schema({
     city: String,
     state: String,
     date: Date,
-    creator: {type: String, required:true},
+    creator: String,
     maxAttendees: Number,
     attendees: Array, 
     details:{

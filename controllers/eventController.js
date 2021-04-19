@@ -28,9 +28,9 @@ event.get('/search', (req, res) => {
 event.post('/', (req, res) => {
     EventModel.create(req.body, (error, createdEvent) => {
         if (error) {
-            res.status(400).json({ error: error.message })
+            res.status(400).json({ error: error.message, status: 400 })
         }
-        res.status(200).json({data:createdEvent, currentUser: req.session.currentUser})
+        res.status(200).json({data:createdEvent, currentUser: req.session.currentUser, status: 200})
     })
 })
 
