@@ -42,7 +42,7 @@ module.exports = [
         lat:  37.865101,
         long: -119.538330,
         city: "Scarsdale",
-        state: "New York",
+        state: "NY",
         date: new Date('May 01, 2921 14:00:00'),
         creator: "Jazmyne", 
         maxAttendees: 5,
