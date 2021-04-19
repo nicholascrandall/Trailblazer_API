@@ -67,14 +67,12 @@ event.put('/:id', (req, res) => {
 })
 
 //event seeding
-event.get('/seed', (req, res) => {
+event.post('/seed', (req, res) => {
     EventModel.create(eventSeed, (err, newEvents) => {
         if (err) {
-            console.log(err);
-        } else {
-            console.log(newEvents);
-            res.redirect('/event')
+            res.status(400).json({ err: err.message });
         }
+        res.status(200).json(newEvents)
     })
 })
 
