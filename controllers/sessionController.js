@@ -3,9 +3,11 @@ const session = express.Router()
 const UserModel = require('../models/userModel');
 const bcrypt = require('bcrypt');
 
-// New Session Route --- AKA User Login
-session.get('/new',(req,res)=>{
-// not yet sure wht to do for routing to the login page
+// Get the current session 
+session.get('/',(req,res)=>{
+    req.session.currentUser?
+        res.json({currentUser: req.session.currentUser}):
+        res.status(400).json({message: 'there is no current active session'})
 })
 
 // Create Session Route 
