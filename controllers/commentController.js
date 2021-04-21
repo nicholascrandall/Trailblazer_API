@@ -1,10 +1,21 @@
 const express = require('express')
 const comment = express.Router()
 const CommentModel = require('../models/commentModel')
+const commentSeed = require('../models/commentsSeed')
 
-//index
-comment.get('/', (req, res) => {
-    CommentModel.find({}, (error, foundComments) => {
+//comment seeding
+comment.get('/seed', (req, res) => {
+    CommentModel.create(commentSeed, (err, newComments) => {
+        if (err) {
+            res.status(400).json({ err: err.message });
+        }
+        res.status(200).json(newComments)
+    })
+})
+
+//index for that specific event
+comment.get('/:eventid', (req, res) => {
+    CommentModel.find({eventid: req.params.eventid}, (error, foundComments) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }

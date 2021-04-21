@@ -6,6 +6,7 @@ const commentSchema = new Schema({
     time: {type: Date, default: Date.now}, 
     content: String,
     rating: Number,
+    eventid: {type: Schema.Types.ObjectId, ref: 'Event'},
 })
 
 module.exports = model('Comment', commentSchema)

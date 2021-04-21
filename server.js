@@ -47,6 +47,7 @@ app.use('/event', require('./controllers/eventController'))
 app.use('/user', require('./controllers/userController'))
 app.use('/session', require('./controllers/sessionController'))
 app.use('/comment', require('./controllers/commentController'))
+app.use('/profile', require('./controllers/profileController'))
 
 app.listen(PORT, () => {
     console.log('server is listening');

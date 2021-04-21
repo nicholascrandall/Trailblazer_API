@@ -20,7 +20,18 @@ event.get('/search', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        res.status(200).json(foundEvents)
+        console.log(req.session.currentUser);
+        res.status(200).json({data: foundEvents, currentUser: req.session.currentUser})
+    })
+})
+
+//event seeding
+event.get('/seed', (req, res) => {
+    EventModel.create(eventSeed, (err, newEvents) => {
+        if (err) {
+            res.status(400).json({ err: err.message });
+        }
+        res.status(200).json({data: newEvents, currentUser: req.session.currentUser})
     })
 })
 
@@ -30,7 +41,8 @@ event.get('/:id', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        res.status(200).json(foundEvent)
+        console.log(req.session.currentUser)
+        res.status(200).json({data: foundEvent, currentUser: req.session.currentUser})
     })
 })
 
@@ -40,7 +52,7 @@ event.post('/', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message, status: 400 })
         }
-        res.status(200).json({data:createdEvent, currentUser: req.session.currentUser, status: 200})
+        res.status(200).json({data: createdEvent, currentUser: req.session.currentUser, status: 200})
     })
 })
 
@@ -53,7 +65,7 @@ event.delete('/:id', (req, res) => {
         else if (deletedEvent === null) {
             res.status(404).json({ message: "Event Not Found" })
         }
-        res.status(200).json({ message: deletedEvent.name + " deleted successfully" })
+        res.status(200).json({ message: deletedEvent.name + " deleted successfully", currentUser: req.session.currentUser })
     })
 })
 
@@ -67,14 +79,5 @@ event.put('/:id', (req, res) => {
     })
 })
 
-//event seeding
-event.post('/seed', (req, res) => {
-    EventModel.create(eventSeed, (err, newEvents) => {
-        if (err) {
-            res.status(400).json({ err: err.message });
-        }
-        res.status(200).json(newEvents)
-    })
-})
 
 module.exports = event

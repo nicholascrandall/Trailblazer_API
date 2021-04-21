@@ -19,7 +19,6 @@ const eventSchema = new Schema({
         description: String,
         },
     img: String,
-    comments: [String],
 })
 
 eventSchema.plugin(mongooseFuzzySearching, { fields: ['name', 'creator'] })
