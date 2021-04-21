@@ -16,7 +16,6 @@ module.exports = [
             description: "Hey guys it's Nick.  On May 5th (Wednesday), I'm gonna go hiking in the Yosemite Valley. Beginners are welcome but prepare for a long day, bring lunch."
         },
         img: "https://www.nps.gov/yose/planyourvisit/images/hiker-in-valleyweb.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
-        comments: ["I've always wanted to go to Yosemite", "This is a great idea!", "I hope it doesn't rain"],
     },
     {
         name: "Haleakala Shuttle Mountain Biking",
@@ -35,7 +34,6 @@ module.exports = [
             description: "Hi everyone, I'm gonna be hosting a Mountain Biking event at Haleakala National Park in Hawaii on Wednesday April 28th. Hope everyone can make it!"
         },
         img: "https://cdn2.apstatic.com/photos/mtb/5079795_medium_1554329691.jpg",
-        comments: ["Haven't been biking since covid :(", "Looks beautiful!"],
     },
     {
         name: "Greenburgh Nature Center",
@@ -54,6 +52,5 @@ module.exports = [
             description: "Hi, on May 1st I'll be taking a short walk through the Greenburgh Nature Center woodland trail. Super easy, all are welcome."
         },
         img: "https://redtri.com/wp-content/uploads/2014/08/greenburgh-nature-center-fall1.jpg",
-        comments: ["An easy walk in the afternoon sounds perfect!"],
     }
 ]
