@@ -80,6 +80,15 @@ event.put('/:id', (req, res) => {
     })
 })
 
+//join an event
+event.patch('/:id/join', (req, res) => {
+    EventModel.findByIdAndUpdate(req.params.id, {$push:{attendees: req.body.username}}, {new:true}, (error, joinedEvent) => {
+        if (error) {
+            res.status(400).json({ error: error.message })
+        }
+        res.status(200).json(joinedEvent)
+    })
+})
 
 
 module.exports = event
