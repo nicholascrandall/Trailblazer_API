@@ -61,9 +61,9 @@ event.delete('/:id', (req, res) => {
 event.put('/:id', (req, res) => {
     EventModel.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedEvent) => {
         if(err) {
-            res.status(400).json({ error: err.message })
+            res.status(400).json({ error: err.message, status: 400 })
         }
-        res.status(200).json(updatedEvent)
+        res.status(200).json({data: updatedEvent, status: 200 })
     })
 })
 
