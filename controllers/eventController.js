@@ -2,10 +2,16 @@ const express = require('express')
 const event = express.Router()
 const EventModel = require('../models/eventModel')
 const eventSeed = require('../models/eventsSeed')
+const MongoQS = require('mongo-querystring');
+
+const qs= new MongoQS
 
 //index
 event.get('/', (req, res) => {
-    EventModel.find({}, (error, foundEvents) => {
+    console.log(qs.parse(req.query))
+    let query = {} 
+    if(req.query){query=qs.parse(req.query)}
+    EventModel.find(query, (error, foundEvents) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
