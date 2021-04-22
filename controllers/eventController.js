@@ -5,8 +5,9 @@ const eventSeed = require('../models/eventsSeed')
 
 //index
 event.get('/', (req, res) => {
+    console.log(req.query);
     let query = {} 
-    if(req.body){query=req.body}
+    if(req.query){query=req.query}
     EventModel.find(query, (error, foundEvents) => {
         if (error) {
             res.status(400).json({ error: error.message })
