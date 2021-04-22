@@ -32,7 +32,6 @@ user.post('/',(req,res)=>{
                 status: 201,
                 data: newUser
             })
-            // res.redirect('/event') --> this makes it mad, need ot figure out how to redirect
         }
     })
 })

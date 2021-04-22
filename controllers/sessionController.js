@@ -32,7 +32,6 @@ session.post('/',(req,res)=>{
 
 /// Destroy Session Route 
 session.delete('/',(req,res)=>{
-    // const loggedOutUser = req.session.currentUser.username
     req.session.destroy( err => {
         if (err) {
             res.status(400).json({message: err.message})
