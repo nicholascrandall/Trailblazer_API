@@ -60,12 +60,12 @@ event.post('/', (req, res) => {
 event.delete('/:id', (req, res) => {
     EventModel.findByIdAndDelete(req.params.id, (error, deletedEvent) => {
         if (error) {
-            req.status(400).json({ error: error.message })
+            req.status(400).json({ error: error.message, status: 400 })
         }
         else if (deletedEvent === null) {
-            res.status(404).json({ message: "Event Not Found" })
+            res.status(404).json({ message: "Event Not Found", status: 404 })
         }
-        res.status(200).json({ message: deletedEvent.name + " deleted successfully", currentUser: req.session.currentUser })
+        res.status(200).json({ message: deletedEvent.name + " deleted successfully", status: 200 })
     })
 })
 
@@ -83,9 +83,9 @@ event.put('/:id', (req, res) => {
 event.patch('/:id/join', (req, res) => {
     EventModel.findByIdAndUpdate(req.params.id, {$push:{attendees: req.body.username}}, {new:true}, (error, joinedEvent) => {
         if (error) {
-            res.status(400).json({ error: error.message })
+            res.status(400).json({ error: error.message, status: 400 })
         }
-        res.status(200).json(joinedEvent)
+        res.status(200).json({data: joinedEvent, status: 200 })
     })
 })
 
@@ -93,9 +93,9 @@ event.patch('/:id/join', (req, res) => {
 event.patch('/:id/leave', (req, res) => {
     EventModel.findByIdAndUpdate(req.params.id, {$pull:{attendees: req.body.username}}, {new:true}, (error, leftEvent) => {
         if (error) {
-            res.status(400).json({ error: error.message })
+            res.status(400).json({ error: error.message, status: 400 })
         }
-        res.status(200).json(leftEvent)
+        res.status(200).json({data: leftEvent, status: 200 })
     })
 })
 
