@@ -21,6 +21,6 @@ const eventSchema = new Schema({
     img: String,
 })
 
-eventSchema.plugin(mongooseFuzzySearching, { fields: ['name', 'creator'] })
+eventSchema.plugin(mongooseFuzzySearching, { fields: ['name', 'creator', 'city', 'state'] })
 
 module.exports = model('Event', eventSchema)
