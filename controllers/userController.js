@@ -36,4 +36,19 @@ user.post('/',(req,res)=>{
     })
 })
 
+// Edit User 
+user.put('/:id',(req,res)=>{
+    UserModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err,editedUser)=>{
+        if (err) {
+            res.status(400).json({message: err.message, status: 400})
+        } else {
+            res.status(200).json({
+                message: `user, ${editedUser.username}, edited successfully.`,
+                status: 200,
+                data: editedUser
+            })
+        }
+    })
+})
+
 module.exports = user
