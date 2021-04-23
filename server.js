@@ -31,7 +31,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 //mongoose
-mongoose.connect('mongodb://localhost:27017/trailblazerDB', {
+mongoose.connect(process.env.MONGODBURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
