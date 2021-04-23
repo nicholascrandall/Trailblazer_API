@@ -8,14 +8,12 @@ const qs= new MongoQS
 
 //index
 event.get('/', (req, res) => {
-    console.log(qs.parse(req.query))
     let query = {} 
     if(req.query){query=qs.parse(req.query)}
     EventModel.find(query, (error, foundEvents) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        console.log(req.session.currentUser);
         res.status(200).json({data:foundEvents, currentUser: req.session.currentUser})
     })
 })
@@ -26,7 +24,6 @@ event.get('/search', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        console.log(req.session.currentUser);
         res.status(200).json({data: foundEvents, currentUser: req.session.currentUser})
     })
 })
@@ -47,7 +44,6 @@ event.get('/:id', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        console.log(req.session.currentUser)
         res.status(200).json({data: foundEvent, currentUser: req.session.currentUser})
     })
 })
