@@ -9,7 +9,6 @@ profile.get('/:username', (req, res) => {
         if (error) {
             res.status(400).json({ error: error.message })
         }
-        console.log(req.session.currentUser)
         res.status(200).json({data: foundProfile, currentUser: req.session.currentUser})
     })
 })
