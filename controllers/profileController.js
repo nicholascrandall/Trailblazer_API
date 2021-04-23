@@ -13,22 +13,6 @@ profile.get('/:username', (req, res) => {
     })
 })
 
-//DELETE user - not sure if we want this in
-
-// profile.delete('/:username', (req, res) => {
-//     UserModel.findOneAndDelete({username: req.params.username}, (error, deletedProfile) => {
-//         if (error) {
-//             res.status(400).json({error: error.message})
-//         }
-//         else if (deletedProfile === null) {
-//             res.status(404).json({message: "Profile not found"})
-//         }
-//         else {
-//             res.status(200).json({message: "Profile deleted successfully"})
-//         }
-//     })
-// })
-
 //UPDATE profile
 profile.put('/:username', (req, res) => {
     UserModel.findOneAndUpdate({username:req.params.username}, req.body, {new: true}, (err, updatedProfile) => {
